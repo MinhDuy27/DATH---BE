@@ -11,7 +11,6 @@ module.exports = async (app) => {
     app.use('/Uploaded-file',express.static('Uploaded-file'))
     //api
     users(app);
-    order(app);
     app.use((req,res,next)=>{
         const error = new Error('Not Found');
         error.status = 404;

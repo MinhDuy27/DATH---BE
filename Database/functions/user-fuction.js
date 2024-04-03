@@ -1,28 +1,21 @@
-const  usersmodel  = require("../models/users");
-const historymodel = require("../models/history");
+const usersmodel  = require("../models/users");
 class usersrepository {
-  async createusers({ email,password,name,salt }) {
+  async createusers({ username,password,name,salt }) {
     
       const users = new usersmodel({
-        email,
+        username,
         password,
         name,
-        studentid:"123456",
         salt,
-        balance:20000,
-        pages:50
       });
       return await users.save();
-    
   }
-
-  async findusers( email ) {
-    let result = await usersmodel.findOne({ email: email }).lean(); 
+  async findusers( username ) {
+    let result = await usersmodel.findOne({ username: username }).lean(); 
     return result;
 }
-
-  async changepassword({email,userpassword}){
-        const query = { email: email };
+  async changepassword({username,userpassword}){
+        const query = { username: username };
         const update = { $set: { password: userpassword }};
         const options = {};
         return await usersmodel.updateOne(query, update, options)
@@ -37,28 +30,10 @@ class usersrepository {
       existingusers.feedback.push(newfeedback);
       return existingusers.save();
   }
-  async buypaper(_id,number,money){
-    const existingusers = await usersmodel.findById(_id).select('balance pages');
-    existingusers.balance = existingusers.balance - parseInt(money)
-    existingusers.pages = existingusers.pages + parseInt(number)
-    const history = new historymodel({
-      studentid:_id,
-      paytime:new Date().toLocaleString(),
-      number:number,
-      money:money,
-      status:"paid"
-    });
-    await history.save();
-    return existingusers.save();
-  }
   async findusersbyid( id ) {
       const existingusers = await usersmodel.findById(id);
       return existingusers;
   }
-  async buypaper_history( id ) {
-    const history = await historymodel.find({studentid:id})
-    return history;
-}
   
 }
 
