@@ -17,8 +17,8 @@ module.exports = (app) => {
   app.put("/users/changepassword",userauth, async (req, res, next) => {
     try {
       const { username,oldpassword,newpassword} = req.body;
-      const   mydata   = await service.changepassword({ username,oldpassword,newpassword }); 
-      return res.status(200).json("password changed")
+      await service.changepassword({ username,oldpassword,newpassword }); 
+      return res.status(200).json({"message":"password changed"})
     } catch (error) {
       next(error)
     }
