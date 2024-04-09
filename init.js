@@ -1,6 +1,6 @@
 const express = require('express');
 const cors  = require('cors');
-const{users,order} = require('./API');
+const{users} = require('./API');
 const morgan = require('morgan');
 module.exports = async (app) => {
 

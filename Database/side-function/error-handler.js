@@ -15,7 +15,7 @@ Sentry.init({
     // Set sampling rate for profiling - this is relative to tracesSampleRate
     profilesSampleRate: 1.0,
   });
-  module.exports = (app)=>{
+  module.exports = (app) => {
     app.use((error,req,res,next)=>{
       let reportError = true;
       [validationError,internalError,authorizeError,notfoundError].forEach((typeErorr)=>{
