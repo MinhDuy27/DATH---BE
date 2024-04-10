@@ -11,13 +11,13 @@ class usersservice {
 
         const { name, high,low } = input;
         const object = await this.repository.findbyname( name );
-        const response = None
+        var response = false
         if (!object)
             throw new notfoundError("invalid Name")
         else{
             response = await this.repository.setbound({name:name,high: high,low: low})
         }
-        if (response == None)
+        if (response == false)
             throw internalError("get unexpected error, try again")
     }
 }

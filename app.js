@@ -2,7 +2,8 @@ const express = require('express');
 const databaseConnection  = require('./Database/connection');
 const expressApp = require('./init');
 const errorHandler  = require('./Database/side-function/error-handler');
-
+const {fetchData} = require('./Sensors')
+const interval = 5000; // Interval in milliseconds (e.g., 5 seconds)
 const StartServer = async() => {
 
     const app = express();
@@ -15,5 +16,6 @@ const StartServer = async() => {
 
     app.listen(process.env.Port); // init listening port
 
+    setInterval(fetchData, interval);
 }
 StartServer(); 

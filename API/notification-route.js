@@ -23,9 +23,9 @@ module.exports = (app) => {
   });
   app.patch("/notifications/markbyid", async (req, res, next) => {
     try{
-      const { id } = req.body;
-      const reponse = await service.markasread(id);
-     return  res.status(200).json("message: Done")
+      const { _id } = req.body;
+      const reponse = await service.markasread(_id);
+     return  res.status(200).json({message:"Done"})
     }
     catch(error){
       next(error)
@@ -34,7 +34,7 @@ module.exports = (app) => {
   app.patch("/notifications/markall", async (req, res, next) => {
     try{
       const  reponse = await service.markasread(true);
-      return  res.status(200).json("message:Done")
+      return  res.status(200).json({message:"Done"})
     }
     catch(error){
       next(error)

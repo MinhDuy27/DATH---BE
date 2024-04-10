@@ -1,6 +1,6 @@
 const express = require('express');
 const cors  = require('cors');
-const{users} = require('./API');
+const{users,sensors,notifications} = require('./API');
 const morgan = require('morgan');
 module.exports = async (app) => {
 
@@ -11,6 +11,8 @@ module.exports = async (app) => {
     app.use('/Uploaded-file',express.static('Uploaded-file'))
     //api
     users(app);
+    sensors(app);
+    notifications(app);
     app.use((req,res,next)=>{
         const error = new Error('Not Found');
         error.status = 404;

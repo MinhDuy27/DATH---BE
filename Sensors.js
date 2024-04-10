@@ -1,18 +1,33 @@
 const {getSensorsInfo} = require('./getSensor')
 const {setnotify} = require('./create-notification')
-fetchData = async (req,res,next) =>{
+module.exports.fetchData = async () =>{
     try{
-        const [temperature,humidity,light] = await Promise.all([
-            getSensorsInfo('feeds/temp-sensor/data'),
-            getSensorsInfo('feeds/humidity-sensor/data'),
-            getSensorsInfo('feeds/lighting-sensor/data')
+            const [temperature,humidity,light] = await Promise.all([
+            getSensorsInfo('feeds/temp-sensor/data/next'),
+            getSensorsInfo('feeds/humidity-sensor/data/next'),
+            getSensorsInfo('feeds/lighting-sensor/data/next')
         ]);
-            setnotify((String(temperature.data.feed_key),Number(temperature.data.value)))
-            setnotify((String(humidity.data.feed_key),Number(humidity.data.value)))
-            setnotify((String(light.data.feed_key),Number(light.data.value)))
+        if(temperature.data)
+        {
+            value = await setnotify("temp-sensor",Number(temperature.data.value))
+            if (value) 
+                console.log("created temperature notification")
+        } 
+        if(humidity.data)
+        {
+            value = await setnotify("humidity-sensor",Number(humidity.data.value))
+            if (value) 
+                console.log("created humidity notification")
+        } 
+        if(light.data)
+        {
+            value = await setnotify("lighting-sensor",Number(light.data.value))
+            if (value) 
+                console.log("created lighting notification")
+        } 
+        return 0
     }
     catch(error){
         throw error
     }
 };
-fetchData();

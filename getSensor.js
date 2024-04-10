@@ -4,7 +4,7 @@ const deviceAPI = axios.create({
     baseURL: 'https://io.adafruit.com/api/v2/hungtruongthuan/',
     headers:{
         'Content-Type': 'application/json',
-        'X-AIO-Key': 'aio_HrYd06UmDnZdEv4KRG6aOR0s8Fa9',
+        'X-AIO-Key': 'aio_EkKC668DfVvZpkaXjVUcpM2yDTmB',
     },
 });
 
@@ -14,7 +14,7 @@ module.exports.getSensorsInfo = async (path) => {
         return response
     })
     .catch((error) => {
-        next(error);
+        return (error);
     })
     return response;
 };

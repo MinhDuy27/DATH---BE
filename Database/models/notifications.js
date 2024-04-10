@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const notificationschema = new Schema({
     name: String,
-    content: String,
+    value: Number,
     time: Date,
     type: String,
     flag : Boolean

@@ -1,9 +1,9 @@
 const notificationsmodel  = require("../models/notifications");
 class notificationsrepository {
 
-  async getnotify( type ) {
+  async getnotify(type) {
     try {
-        if (type){
+        if (type == true){
             const value = await notificationsmodel.find()
             return value
         }
@@ -16,14 +16,14 @@ class notificationsrepository {
     }
 }
 
-  async markasread(id){
+  async markasread(_id){
     try {
-        if (id){
+        if (_id == true){
             const value = await notificationsmodel.updateMany({},{flag :true})
             return value
         }
         else{
-            const value = await notificationsmodel.updateOne({_id:id},{flag: true})
+            const value = await notificationsmodel.updateOne({_id:_id},{flag: true})
             return value
         }
     } catch (error) { 
