@@ -4,11 +4,11 @@ class notificationsrepository {
   async getnotify(type) {
     try {
         if (type == true){
-            const value = await notificationsmodel.find()
+            const value = await notificationsmodel.find().lean()
             return value
         }
         else{
-            const value = await notificationsmodel.find({type: type})
+            const value = await notificationsmodel.find({type: type}).lean()
             return value
         }
     } catch (error) { 

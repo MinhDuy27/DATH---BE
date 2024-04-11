@@ -1,5 +1,5 @@
 const { sensorsrepository } = require("../Database");
-const { internalError } = require("../Database/side-function/app-error");
+const { internalError,notfoundError } = require("../Database/side-function/app-error");
 
 
 //logic
@@ -19,6 +19,16 @@ class usersservice {
         }
         if (response == false)
             throw internalError("get unexpected error, try again")
+    }
+    async getbound(name) {
+
+        const object = await this.repository.findbyname( name );
+        if (!object)
+            throw new notfoundError("invalid Name")
+        else{
+            const {high,low} = object
+            return {high,low}
+        }
     }
 }
 

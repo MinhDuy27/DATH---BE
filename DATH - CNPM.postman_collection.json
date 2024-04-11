@@ -1,5 +1,130 @@
 {
-	"name" : "lighting-sensor",
-	"low" : 20,
-	"high": 50
+	"info": {
+		"_postman_id": "d8be5734-0a59-4e83-991d-7545f7e0c3d1",
+		"name": "DATH - CNPM",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "30003353"
+	},
+	"item": [
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "signup",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5lc3RreW84NEBnbWFpbC5jb20iLCJfaWQiOiI2NTU0YzhiMmU1ODNiYTc3MWQ4OGM2NzIiLCJzdHVkZW50aWQiOiIxMjM0NTYiLCJpYXQiOjE3MDAwNTU5MjksImV4cCI6MTcwMDY2MDcyOX0.T9CgD0hKy6JkJKEW5RmrgMUd1hiJTBbZhifuJ7XUghY"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "localhost:3000/users/profile"
+					},
+					"response": []
+				},
+				{
+					"name": "change password",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": {
+					"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5lc3RreW84M0BnbWFpbC5jb20iLCJfaWQiOiI2NTU0ODgxNTdhMzA1YzFlYmU5OWExMjYiLCJzdHVkZW50aWQiOiIxMjM0NTYiLCJpYXQiOjE3MDAwNTM2NjksImV4cCI6MTcwMDY1ODQ2OX0.2Sok9qVQjvhUXuYgUQIBHzAzDLQ5IXGnRrsTeJOIq2s"
+				}
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Sensor",
+			"item": [
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "notifications",
+			"item": [
+				{
+					"name": "all",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "type",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "markbyid",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "markall",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		}
+	]
 }
