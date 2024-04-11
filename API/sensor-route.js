@@ -13,9 +13,9 @@ module.exports = (app) => {
       next(error)
     }
   });
-  app.get("/sensors/bound", async (req, res, next) => {
+  app.get("/sensors/:name", async (req, res, next) => {
     try{
-        const {name} = req.body;
+        const {name} = req.params;
         const response = await service.getbound(name)
         res.status(200).json({high : response.high,low : response.low})
     }
