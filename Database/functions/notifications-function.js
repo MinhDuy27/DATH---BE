@@ -12,7 +12,7 @@ class notificationsrepository {
             return value
         }
     } catch (error) { 
-        next(error)
+        throw (error)
     }
 }
 
@@ -27,7 +27,7 @@ class notificationsrepository {
             return value
         }
     } catch (error) { 
-        next(error)
+        throw (error)
     }
   }
 }
