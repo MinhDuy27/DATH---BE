@@ -17,7 +17,7 @@ module.exports = (app) => {
     try{
         const {name} = req.params;
         const response = await service.getbound(name)
-        res.status(200).json({high : response.high,low : response.low})
+        return res.status(200).json({high : response.high,low : response.low})
     }
     catch(error){
       next(error)

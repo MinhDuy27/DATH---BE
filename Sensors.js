@@ -2,10 +2,11 @@ const {getSensorsInfo} = require('./getSensor')
 const {setnotify} = require('./create-notification')
 module.exports.fetchData = async () =>{
     try{
-            const [temperature,humidity,light] = await Promise.all([
+            const [temperature,humidity,light,warning] = await Promise.all([
             getSensorsInfo('feeds/temp-sensor/data/next'),
             getSensorsInfo('feeds/humidity-sensor/data/next'),
-            getSensorsInfo('feeds/lighting-sensor/data/next')
+            getSensorsInfo('feeds/lighting-sensor/data/next'),
+            getSensorsInfo('feeds/warning/data/next'),
         ]);
         if(temperature.data)
         {
@@ -25,6 +26,13 @@ module.exports.fetchData = async () =>{
             if (value) 
                 console.log("created lighting notification")
         } 
+        if(warning.data)
+        {
+            value = await setnotify("warning",Number(warning.data.value))
+            if (value) 
+                console.log("created warning notification")
+        } 
+
         return 0
     }
     catch(error){

@@ -1,7 +1,6 @@
 const usersmodel  = require("../models/users");
 class usersrepository {
   async createusers({ username,password,name,salt }) {
-    
       const users = new usersmodel({
         username,
         password,

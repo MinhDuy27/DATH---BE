@@ -2,7 +2,18 @@ const sensorsmodel = require('./Database/models/sensors')
 const notificationsmodel = require('./Database/models/notifications')
 module.exports.setnotify = async (name,value) =>{
     try {
-    const object = await sensorsmodel.findOne({ name: name }); 
+        if(name == "warning" && value == 1)
+        {
+          const notify = new notificationsmodel({
+            name: name,
+            time: Date.now(),
+            type: "Phát hiện người",
+            flag: false
+          })
+          await notify.save()
+          return true
+        }
+       const object = await sensorsmodel.findOne({ name: name }); 
         if (value > object.high)
         {
           const notify = new notificationsmodel({
