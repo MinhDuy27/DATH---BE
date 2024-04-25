@@ -2,16 +2,18 @@ const sensorsmodel = require('./Database/models/sensors')
 const notificationsmodel = require('./Database/models/notifications')
 module.exports.setnotify = async (name,value) =>{
     try {
-        if(name == "warning" && value == 1)
+        if(name == "warning")
         {
-          const notify = new notificationsmodel({
-            name: name,
-            time: Date.now(),
-            type: "Phát hiện người",
-            flag: false
-          })
-          await notify.save()
+          if(value == 1)
+            {const notify = new notificationsmodel({
+              name: name,
+              time: Date.now(),
+              type: "Phát hiện người",
+              flag: false
+            })
+            await notify.save()
           return true
+        }
         }
         else
         {
